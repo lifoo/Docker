@@ -18,14 +18,16 @@ echo \
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
-sudo groupadd docker
+#sudo groupadd docker
 
 sudo usermod -aG docker $USER
 
-#newgrp docker
+sudo echo $'{\n    "experimental": true\n}' | sudo tee /etc/docker/daemon.json
+
+newgrp docker
 
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 
-sudo systemctl start docker.service
-sudo systemctl start containerd.service
+#sudo systemctl start docker.service
+#sudo systemctl start containerd.service

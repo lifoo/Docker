@@ -10,7 +10,7 @@ RUN \
   apt-get autoremove && \
   rm -rf /var/lib/apt/lists/*
 
-COPY install_config.txt /vivado-installer/
+COPY install_config_vitis.txt /vivado-installer/
 COPY xilinx_ise_vivado.lic /vivado-installer/
 ADD Xilinx_Unified_2020.1_0602_1208.tar.gz /vivado-installer/
 
@@ -18,7 +18,7 @@ RUN \
   /vivado-installer/Xilinx_Unified_2020.1_0602_1208/xsetup \
     --agree 3rdPartyEULA,WebTalkTerms,XilinxEULA \
     --batch Install \
-    --config /vivado-installer/install_config.txt && \
+    --config /vivado-installer/install_config_vitis.txt && \
   echo "source /tools/Xilinx/Vivado/2020.1/settings64.sh" >> /etc/bash.bashrc && \
   mkdir -p /work/.Xilinx && \
   cp /vivado-installer/xilinx_ise_vivado.lic /work/.Xilinx/xilinx_ise_vivado.lic && \
